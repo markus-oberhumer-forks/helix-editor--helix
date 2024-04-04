@@ -2457,7 +2457,7 @@ fn yank_diagnostic(
 pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     TypableCommand {
         name: "quit",
-        aliases: &["q"],
+        aliases: &["Q"], // mfx
         doc: "Close the current view.",
         fun: quit,
         signature: CommandSignature::none(),
@@ -2478,7 +2478,7 @@ pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     },
     TypableCommand {
         name: "buffer-close",
-        aliases: &["bc", "bclose"],
+        aliases: &["bc", "bclose", "q"], // mfx
         doc: "Close the current buffer.",
         fun: buffer_close,
         signature: CommandSignature::all(completers::buffer),
