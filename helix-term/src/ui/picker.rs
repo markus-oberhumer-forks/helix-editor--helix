@@ -1026,6 +1026,26 @@ impl<I: 'static + Send + Sync, D: 'static + Send + Sync> Component for Picker<I,
             key!(End) => {
                 self.to_end();
             }
+            // mfx: German keyboard, Laptop
+            key!('ü') => {
+                self.move_by(1, Direction::Backward);
+            }
+            key!('ä') => {
+                self.move_by(1, Direction::Forward);
+            }
+            ctrl!('ü') | ctrl!(Up) => {
+                self.page_up();
+            }
+            ctrl!('ä') | ctrl!(Down) => {
+                self.page_down();
+            }
+            ctrl!('ö') | ctrl!(Left) => {
+                self.to_start();
+            }
+            ctrl!('#') | ctrl!(Right) => {
+                self.to_end();
+            }
+            // end mfx
             key!(Esc) | ctrl!('c') => return close_fn(self),
             alt!(Enter) => {
                 if let Some(option) = self.selection() {
