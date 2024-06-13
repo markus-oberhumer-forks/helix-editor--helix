@@ -3249,6 +3249,8 @@ pub(super) fn command_mode(cx: &mut Context) {
         None
     });
 
+    // make Helix behave like Vim/Neovim and Kakoune
+    prompt.backspace_can_abort = true;
     // Calculate initial completion
     prompt.recalculate_completion(cx.editor);
     cx.push_layer(Box::new(prompt));

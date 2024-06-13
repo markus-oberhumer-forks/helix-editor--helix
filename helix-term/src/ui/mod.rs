@@ -164,6 +164,8 @@ pub fn raw_regex_prompt(
         },
     )
     .with_language("regex", std::sync::Arc::clone(&cx.editor.syn_loader));
+    // make Helix behave like Vim/Neovim and Kakoune
+    prompt.backspace_can_abort = true;
     // Calculate initial completion
     prompt.recalculate_completion(cx.editor);
     // prompt
