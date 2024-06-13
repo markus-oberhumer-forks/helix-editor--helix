@@ -37,6 +37,7 @@ pub struct Prompt {
     pub doc_fn: DocFn,
     next_char_handler: Option<PromptCharHandler>,
     language: Option<(&'static str, Arc<ArcSwap<syntax::Loader>>)>,
+    pub backspace_can_abort: bool,
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -89,6 +90,7 @@ impl Prompt {
             doc_fn: Box::new(|_| None),
             next_char_handler: None,
             language: None,
+            backspace_can_abort: false,
         }
     }
 
@@ -568,6 +570,10 @@ impl Component for Prompt {
                 (self.callback_fn)(cx, &self.line, PromptEvent::Update);
             }
             ctrl!('h') | key!(Backspace) | shift!(Backspace) => {
+                if self.backspace_can_abort && self.line.is_empty() {
+                    (self.callback_fn)(cx, &self.line, PromptEvent::Abort);
+                    return close_fn;
+                }
                 self.delete_char_backwards(cx.editor);
                 (self.callback_fn)(cx, &self.line, PromptEvent::Update);
             }
