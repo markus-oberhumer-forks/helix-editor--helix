@@ -52,3 +52,13 @@ repository = "https://github.com/helix-editor/helix"
 homepage = "https://helix-editor.com"
 license = "MPL-2.0"
 rust-version = "1.76"
+
+[profile.mfx]
+inherits = "release"
+lto = "off"
+incremental = true
+opt-level = 1
+strip = false
+[profile.mfx.package."*"]
+opt-level = 2
+strip = true
