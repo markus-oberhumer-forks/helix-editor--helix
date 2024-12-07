@@ -4178,7 +4178,8 @@ pub(super) fn command_mode(cx: &mut Context) {
     );
     prompt.doc_fn = Box::new(command_line_doc);
 
-    // Calculate initial completion
+    prompt.backspace_can_abort = true; // make helix behave like vim and kakoune
+                                       // Calculate initial completion
     prompt.recalculate_completion(cx.editor);
     cx.push_layer(Box::new(prompt));
 }
