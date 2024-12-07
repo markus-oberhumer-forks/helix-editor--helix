@@ -2532,7 +2532,7 @@ fn read(cx: &mut compositor::Context, args: &[Cow<str>], event: PromptEvent) -> 
 pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     TypableCommand {
         name: "quit",
-        aliases: &["q"],
+        aliases: &["qq", "Q", "QQ", "Qq"], // mfx
         doc: "Close the current view.",
         fun: quit,
         signature: CommandSignature::none(),
@@ -2553,7 +2553,7 @@ pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     },
     TypableCommand {
         name: "buffer-close",
-        aliases: &["bc", "bclose"],
+        aliases: &["bc", "bclose", "q"], // mfx
         doc: "Close the current buffer.",
         fun: buffer_close,
         signature: CommandSignature::all(completers::buffer),
@@ -2724,7 +2724,7 @@ pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     },
     TypableCommand {
         name: "quit-all",
-        aliases: &["qa"],
+        aliases: &["qa", "QA", "Qa"], // mfx
         doc: "Close all views.",
         fun: quit_all,
         signature: CommandSignature::none(),
