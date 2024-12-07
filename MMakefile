@@ -1,0 +1,14 @@
+PROFILE = release
+PROFILE = mfx
+
+build: PHONY
+	time nice cargo build --profile $(PROFILE)
+
+test: PHONY
+	time nice cargo test --profile $(PROFILE) --workspace
+
+fmt format: PHONY
+	time nice cargo fmt
+
+.NOTPARALLEL:
+.PHONY: PHONY
