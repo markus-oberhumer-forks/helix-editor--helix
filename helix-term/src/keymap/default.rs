@@ -108,7 +108,7 @@ pub fn default() -> HashMap<Mode, KeyTrie> {
             "a" => select_textobject_around,
             "i" => select_textobject_inner,
         },
-        "[" => { "Left bracket"
+        "[" | "ß" => { "Left bracket" // mfx: better support for German keyboard
             "d" => goto_prev_diag,
             "D" => goto_first_diag,
             "g" => goto_prev_change,
@@ -123,7 +123,7 @@ pub fn default() -> HashMap<Mode, KeyTrie> {
             "x" => goto_prev_xml_element,
             "space" => add_newline_above,
         },
-        "]" => { "Right bracket"
+        "]" | "´" => { "Right bracket" // mfx: better support for German keyboard
             "d" => goto_next_diag,
             "D" => goto_last_diag,
             "g" => goto_next_change,
