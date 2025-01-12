@@ -595,6 +595,9 @@ pub enum StatusLineElement {
 
     /// Indicator for selected register
     Register,
+
+    /// The indent style
+    IndentStyle,
 }
 
 // Cursor shape is read and used on every rendered frame and so needs
