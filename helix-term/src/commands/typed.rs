@@ -3030,7 +3030,7 @@ pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     },
     TypableCommand {
         name: "quit",
-        aliases: &["qu", "qq", "Q", "QQ", "Qq"], // mfx
+        aliases: &["q", "qu", "qq", "Q", "QQ", "Qq"], // mfx
         doc: "Close the current view.",
         fun: quit,
         completer: CommandCompleter::none(),
@@ -3063,7 +3063,7 @@ pub const TYPABLE_COMMAND_LIST: &[TypableCommand] = &[
     },
     TypableCommand {
         name: "buffer-close",
-        aliases: &["bc", "bclose", "q"], // mfx
+        aliases: &["bc", "bclose"], // mfx
         doc: "Close the current buffer.",
         fun: buffer_close,
         completer: CommandCompleter::all(completers::buffer),
