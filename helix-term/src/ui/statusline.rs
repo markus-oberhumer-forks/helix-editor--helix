@@ -564,9 +564,14 @@ where
     write(
         context,
         match style {
-            IndentStyle::Tabs => " tabs ".into(),
+            // IndentStyle::Tabs => " tabs ".into(),
+            IndentStyle::Tabs => {
+                let n = context.doc.tab_width();
+                format!(" t{} ", n).into() // "tnnn"
+            },
             IndentStyle::Spaces(indent) => {
-                format!(" {} space{} ", indent, if indent == 1 { "" } else { "s" }).into()
+                // format!(" {} space{} ", indent, if indent == 1 { "" } else { "s" }).into()
+                format!(" s{} ", indent).into() // "snnn"
             }
         },
     );
